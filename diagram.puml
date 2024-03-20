@@ -1,0 +1,78 @@
+@startuml OWL
+
+title OWL
+
+class Gamemode {
+    - string Name
+    - string Description
+    - int Amount_players
+    - bool Newlyadded
+    - Character Character
+
+    + void Gamemode()
+    + string CreateGamemode()
+    + string GetGamemodes()
+    + string AddToGamemode()
+}
+
+
+class Character {
+    - string Name
+    - string Description
+    - string Image
+    - bool Newly_added
+    - Fightstyle Fightstyle
+    - Move Move
+
+    + void Character()
+    + string CreateCharacter()
+    + string GetCharacters()
+    + bool DetectNewlyAdded()
+}
+
+class Fightstyle {
+    - Character Character
+    - string Name
+    - int Power
+    - int Speed
+
+    + string GetStyles()
+    + string CreateStyle()
+    + string AddStyleToChar()
+}
+
+class Move {
+    - Character Character
+    - string Name
+    - string Description
+    - string Image
+    - string Motion
+
+    + string GetMoves()
+    + string CreateMove()
+    + string AddMoveToChar()
+}
+
+class News {
+    - string Title
+    - string Description
+    - string Image
+    - Enum Category
+
+    + string GetArticles()
+    + string CreateArticle()
+}
+
+enum Category {
+    Updates
+    Characters
+    Merchandise
+    Events
+}
+
+Character --* "*" Move
+Character --* "1" Fightstyle
+News --* "1" Category
+Gamemode --* "*" Character
+
+@enduml
