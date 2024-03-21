@@ -1,0 +1,12 @@
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\bin\Debug\net8.0\OWL.DataAccess.deps.json
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\bin\Debug\net8.0\OWL.DataAccess.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\bin\Debug\net8.0\OWL.DataAccess.pdb
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.AssemblyInfoInputs.cache
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.AssemblyInfo.cs
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.csproj.CoreCompileInputs.cache
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.sourcelink.json
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\refint\OWL.DataAccess.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.pdb
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\ref\OWL.DataAccess.dll

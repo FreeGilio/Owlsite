@@ -3,11 +3,10 @@
 title OWL
 
 class Gamemode {
-    - string Name
-    - string Description
-    - int Amount_players
-    - bool Newlyadded
-    - Character Character
+    + string Name
+    + string Description
+    + int Amount_players
+    + Character Character
 
     + void Gamemode()
     + string CreateGamemode()
@@ -17,47 +16,49 @@ class Gamemode {
 
 
 class Character {
-    - string Name
-    - string Description
-    - string Image
-    - bool Newly_added
-    - Fightstyle Fightstyle
-    - Move Move
+    + string Name
+    + string Description
+    + string Image
+    + bool Newly_added
+    + Fightstyle Fightstyle
+    + Move Move
 
     + void Character()
     + string CreateCharacter()
     + string GetCharacters()
+    + string UpdateCharacter()
     + bool DetectNewlyAdded()
 }
 
 class Fightstyle {
-    - Character Character
-    - string Name
-    - int Power
-    - int Speed
+    + string Name
+    + int Power
+    + int Speed
 
     + string GetStyles()
     + string CreateStyle()
+    + string UpdateStyle()
     + string AddStyleToChar()
 }
 
 class Move {
-    - Character Character
-    - string Name
-    - string Description
-    - string Image
-    - string Motion
+    + Character Character
+    + string Name
+    + string Description
+    + string Image
+    + string Motion
 
     + string GetMoves()
     + string CreateMove()
+    + string UpdateMove()
     + string AddMoveToChar()
 }
 
 class News {
-    - string Title
-    - string Description
-    - string Image
-    - Enum Category
+    + string Title
+    + string Description
+    + string Image
+    + Enum Category
 
     + string GetArticles()
     + string CreateArticle()
@@ -70,9 +71,9 @@ enum Category {
     Events
 }
 
-Character --* "*" Move
-Character --* "1" Fightstyle
+Character o-- "1..*" Move
+Character o-- "1" Fightstyle
 News --* "1" Category
-Gamemode --* "*" Character
+Gamemode -- "1..*" Character
 
 @enduml
