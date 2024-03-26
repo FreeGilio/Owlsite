@@ -6,6 +6,9 @@
       "AbsoluteMoniker": "D:0:0:{AE2E0A95-4822-4013-91C7-0F48AA66A80E}|..\\OWL.Core\\OWL.Core.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.core\\models\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{AE2E0A95-4822-4013-91C7-0F48AA66A80E}|..\\OWL.Core\\OWL.Core.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.core\\models\\fightstyle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AE2E0A95-4822-4013-91C7-0F48AA66A80E}|..\\OWL.Core\\OWL.Core.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.core\\models\\news.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -18,9 +21,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE2E0A95-4822-4013-91C7-0F48AA66A80E}|..\\OWL.Core\\OWL.Core.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.core\\models\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE2E0A95-4822-4013-91C7-0F48AA66A80E}|..\\OWL.Core\\OWL.Core.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.core\\models\\fightstyle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90B167A0-A63C-468E-BD4B-6944B0749497}|..\\OWL.DataAccess\\OWL.DataAccess.csproj|d:\\fontys\\semester2\\herhaling\\owlsite\\owl.dataaccess\\owl.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -60,11 +60,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Fightstyle.cs",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\Models\\Fightstyle.cs",
               "RelativeDocumentMoniker": "..\\OWL.Core\\Models\\Fightstyle.cs",
@@ -77,8 +77,12 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -86,12 +90,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-21T13:43:13.746Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T13:43:13.746Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "News.cs",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\Models\\News.cs",
               "RelativeDocumentMoniker": "..\\OWL.Core\\Models\\News.cs",
@@ -99,12 +102,11 @@
               "RelativeToolTip": "..\\OWL.Core\\Models\\News.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAWwBsAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T13:36:46.181Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T13:36:46.181Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Move.cs",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\Models\\Move.cs",
               "RelativeDocumentMoniker": "..\\OWL.Core\\Models\\Move.cs",
@@ -112,8 +114,7 @@
               "RelativeToolTip": "..\\OWL.Core\\Models\\Move.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T13:18:30.373Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T13:18:30.373Z"
             },
             {
               "$type": "Document",
@@ -123,14 +124,14 @@
               "RelativeDocumentMoniker": "..\\OWL.Core\\Models\\Character.cs",
               "ToolTip": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\Models\\Character.cs",
               "RelativeToolTip": "..\\OWL.Core\\Models\\Character.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAzwBcAAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-21T12:39:13.627Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -138,60 +139,55 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T12:56:25.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T12:56:25.686Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "OWL.MVC",
+              "Title": "OWL.MVC.csproj",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\OWL.MVC.csproj",
               "RelativeDocumentMoniker": "OWL.MVC.csproj",
               "ToolTip": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\OWL.MVC.csproj",
               "RelativeToolTip": "OWL.MVC.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-21T10:41:32.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:41:32.21Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "OWL.DataAccess",
+              "Title": "OWL.DataAccess.csproj",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.DataAccess\\OWL.DataAccess.csproj",
               "RelativeDocumentMoniker": "..\\OWL.DataAccess\\OWL.DataAccess.csproj",
               "ToolTip": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.DataAccess\\OWL.DataAccess.csproj",
               "RelativeToolTip": "..\\OWL.DataAccess\\OWL.DataAccess.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-21T11:02:08.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:02:08.494Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "OWL.Test",
+              "Title": "OWL.Test.csproj",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Test\\OWL.Test.csproj",
               "RelativeDocumentMoniker": "..\\OWL.Test\\OWL.Test.csproj",
               "ToolTip": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Test\\OWL.Test.csproj",
               "RelativeToolTip": "..\\OWL.Test\\OWL.Test.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-21T11:02:05.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:02:05.795Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "OWL.Core",
+              "Title": "OWL.Core.csproj",
               "DocumentMoniker": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\OWL.Core.csproj",
               "RelativeDocumentMoniker": "..\\OWL.Core\\OWL.Core.csproj",
               "ToolTip": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\OWL.Core.csproj",
               "RelativeToolTip": "..\\OWL.Core\\OWL.Core.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-21T10:40:34.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:40:34.665Z"
             },
             {
               "$type": "Document",
@@ -203,8 +199,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-21T10:39:04.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:39:04.35Z"
             },
             {
               "$type": "Document",
@@ -216,8 +211,7 @@
               "RelativeToolTip": "..\\OWL.DataAccess\\Class1.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T10:26:06.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:26:06.168Z"
             },
             {
               "$type": "Document",
@@ -229,8 +223,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ViewState": "AQIAADsHAAAAAAAAAAAuwEoHAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-03-21T10:41:30.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:41:30.562Z"
             },
             {
               "$type": "Document",
@@ -242,8 +235,7 @@
               "RelativeToolTip": "Models\\ErrorViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T10:38:54.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:38:54.248Z"
             },
             {
               "$type": "Document",
@@ -255,8 +247,7 @@
               "RelativeToolTip": "..\\OWL.Core\\Class1.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T10:27:50.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:27:50.931Z"
             }
           ]
         }

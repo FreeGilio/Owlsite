@@ -6,7 +6,6 @@ class Gamemode {
     + string Name
     + string Description
     + int Amount_players
-    + Character Character
 
     + void Gamemode()
     + string CreateGamemode()
@@ -20,10 +19,20 @@ class Character {
     + string Description
     + string Image
     + bool Newly_added
-    + Fightstyle Fightstyle
-    + Move Move
 
     + void Character()
+    + string CreateCharacter()
+    + string GetCharacters()
+    + string UpdateCharacter()
+    + bool DetectNewlyAdded()
+}
+
+Interface ICharacter {
+    + string Name
+    + string Description
+    + string Image
+    + bool Newly_added
+
     + string CreateCharacter()
     + string GetCharacters()
     + string UpdateCharacter()
@@ -42,7 +51,6 @@ class Fightstyle {
 }
 
 class Move {
-    + Character Character
     + string Name
     + string Description
     + string Image
@@ -71,9 +79,10 @@ enum Category {
     Events
 }
 
-Character o-- "1..*" Move
-Character o-- "1" Fightstyle
+Character <|-- "<List>Move *" Move
+Character <|-- "Fightstyle 1" Fightstyle
 News --* "1" Category
-Gamemode -- "1..*" Character
+Gamemode <|-- "<List>Character *" Character
+ICharacter <|--  Character
 
 @enduml

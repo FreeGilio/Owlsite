@@ -16,8 +16,9 @@ namespace OWL.Core.Models
 
         public bool NewlyAdded {  get; private set; }
 
-        public Move Moves { get; private set; }
-
         public Fightstyle Fightstyle { get; private set; }
+
+        public Move Moves { get; private set; }
+       
     }
 }
