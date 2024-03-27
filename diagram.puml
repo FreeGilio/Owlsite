@@ -6,6 +6,7 @@ class Gamemode {
     + string Name
     + string Description
     + int Amount_players
+    + list<Character> Character
 
     + void Gamemode()
     + string CreateGamemode()
@@ -19,6 +20,7 @@ class Character {
     + string Description
     + string Image
     + bool Newly_added
+    + list<Move> Move
 
     + void Character()
     + string CreateCharacter()
@@ -32,6 +34,7 @@ Interface ICharacter {
     + string Description
     + string Image
     + bool Newly_added
+    + list<Move> Move
 
     + string CreateCharacter()
     + string GetCharacters()
@@ -66,23 +69,22 @@ class News {
     + string Title
     + string Description
     + string Image
-    + Enum Category
+    + List<Category> Category
 
     + string GetArticles()
     + string CreateArticle()
 }
 
-enum Category {
-    Updates
-    Characters
-    Merchandise
-    Events
+class Category {
+    + string Name
+
+    + string GetCategories()
 }
 
-Character <|-- "<List>Move *" Move
+Character <|-- "Move *" Move
 Character <|-- "Fightstyle 1" Fightstyle
-News --* "1" Category
-Gamemode <|-- "<List>Character *" Character
+News <|-- "Category*" Category
+Gamemode <|-- "Character *" Character
 ICharacter <|--  Character
 
 @enduml

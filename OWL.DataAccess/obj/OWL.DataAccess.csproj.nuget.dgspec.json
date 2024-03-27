@@ -119,9 +119,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Data.SqlClient": {
+            "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[5.2.0, )"
+              "version": "[8.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
             }
           },
           "imports": [

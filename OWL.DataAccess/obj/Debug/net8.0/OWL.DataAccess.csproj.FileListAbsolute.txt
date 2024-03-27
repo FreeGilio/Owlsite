@@ -10,3 +10,7 @@ D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAc
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\refint\OWL.DataAccess.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.pdb
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\ref\OWL.DataAccess.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\bin\Debug\net8.0\OWL.Core.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\bin\Debug\net8.0\OWL.Core.pdb
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.DataAccess.csproj.AssemblyReference.cache
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.DataAccess\obj\Debug\net8.0\OWL.Data.25FE2A7F.Up2Date

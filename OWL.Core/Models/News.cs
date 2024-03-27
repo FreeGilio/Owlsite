@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,8 @@ namespace OWL.Core.Models
 {
     public class News
     {
-
-        public int Id { get; private set; }
+        [Key]
+        public int News_Id { get; private set; }
 
         public string Title { get; private set; }
 
@@ -17,14 +18,6 @@ namespace OWL.Core.Models
 
         public string Image { get; private set; }
 
-        public enum Category 
-        { 
-        Updates,
-        Characters,
-        Merchandise,
-        Events
-        }
-
-        public Category category { get; private set; }
+        public List<Category> Category { get; private set; }
     }
 }

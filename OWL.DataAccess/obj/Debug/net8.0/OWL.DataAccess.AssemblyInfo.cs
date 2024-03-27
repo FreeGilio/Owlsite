@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("d8d4769d-33d3-4c88-b691-df192da28f84")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0e832c8efcefd8882a7b584d243a3dda65c6aa7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb19a3b39193a6a3a4c6b6cea6f64b42da9644c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

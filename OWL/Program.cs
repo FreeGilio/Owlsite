@@ -1,4 +1,13 @@
+using OWL.DataAccess.DB;
+using OWL.DataAccess.Repository;
+using OWL.Core.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Register DatabaseConnection
+builder.Services.AddSingleton<DatabaseConnection>(_ => new DatabaseConnection("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=OWL;Integrated Security=True"));
+
+builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

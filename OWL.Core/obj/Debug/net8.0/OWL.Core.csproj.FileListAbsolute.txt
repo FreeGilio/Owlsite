@@ -1,15 +1,11 @@
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\bin\Debug\net8.0\OWL.Core.deps.json
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\bin\Debug\net8.0\OWL.Core.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\bin\Debug\net8.0\OWL.Core.pdb
-D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\bin\Debug\net8.0\OWL.DataAccess.dll
-D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\bin\Debug\net8.0\OWL.DataAccess.pdb
-D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.csproj.AssemblyReference.cache
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.GeneratedMSBuildEditorConfig.editorconfig
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.AssemblyInfoInputs.cache
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.AssemblyInfo.cs
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.csproj.CoreCompileInputs.cache
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.sourcelink.json
-D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.csproj.Up2Date
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\refint\OWL.Core.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Core\obj\Debug\net8.0\OWL.Core.pdb
