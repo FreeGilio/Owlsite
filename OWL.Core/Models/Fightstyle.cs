@@ -9,8 +9,7 @@ namespace OWL.Core.Models
 {
     public class Fightstyle
     {
-        [Key]
-        public int Fightstyle_Id {  get; private set; }
+        public int Id {  get; private set; }
 
         public string Name { get; private set; }
 

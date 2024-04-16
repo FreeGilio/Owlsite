@@ -9,8 +9,7 @@ namespace OWL.Core.Models
 {
     public class Category
     {
-        [Key]
-        public int Category_Id { get; private set; }
+        public int Id { get; private set; }
 
         public string Name { get; private set; }
     }

@@ -9,8 +9,7 @@ namespace OWL.Core.Models
 {
     public class News
     {
-        [Key]
-        public int News_Id { get; private set; }
+        public int Id { get; private set; }
 
         public string Title { get; private set; }
 
@@ -18,6 +17,5 @@ namespace OWL.Core.Models
 
         public string Image { get; private set; }
 
-        public List<Category> Category { get; private set; }
     }
 }

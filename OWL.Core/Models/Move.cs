@@ -9,8 +9,7 @@ namespace OWL.Core.Models
 {
     public class Move
     {
-        [Key]
-        public int Move_Id { get; private set; }
+        public int Id { get; private set; }
 
         public string Name { get; private set; }
 
