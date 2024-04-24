@@ -1,73 +1,128 @@
 @startuml OWL
 
-title OWL
+title OWL Architecture
 
-class Gamemode {
-    + string Name
-    + string Description
-    + int Amount_players
+class DatabaseConnection {
+    + readonly string connectionString
+    + DatabaseConnection(connectionString)
 
-    + void Gamemode()
-    + string CreateGamemode()
-    + string GetGamemodes()
-    + string AddToGamemode()
+    + void StartConnection()
+}
+
+' class GamemodeDto {
+'     + string Name
+'     + string Description
+'     + int Amount_players
+' }
+
+' class GamemodeService {
+'     + GamemodeService()
+'     + void Gamemode()
+'     + string CreateGamemode()
+'     + string GetGamemodes()
+'     + string AddToGamemode()
+' }
+
+Class CharacterController {
+    - readonly CharacterService
+
+    + CharacterController
+    + Index()
+}
+
+Interface ICharacterRepository {
+    +  List<CharacterDto> GetAllCharacters();
+}
+
+Class CharacterRepository {
+    +  CharacterRepository(DatabaseConnection)
+    +  List<CharacterDto> GetAllCharacters()
+    -  CharacterDto MapCharacterDtoFromReader(SqlDataReader reader)
 }
 
 
-class Character {
+class CharacterDto {
     + string Name
     + string Description
     + string Image
     + bool Newly_added
+}
 
-    + void Character()
+class CharacterService {
+    - readonly ICharacterRepository
+
+    + CharacterService(IcharacterRepository)
     + string CreateCharacter()
-    + string GetCharacters()
+    + List<Character> GetAllCharacters()
     + string UpdateCharacter()
     + bool DetectNewlyAdded()
 }
 
-class Fightstyle {
-    + string Name
-    + int Power
-    + int Speed
+' class FightstyleDto {
+'     + string Name
+'     + int Power
+'     + int Speed
+' }
 
-    + string GetStyles()
-    + string CreateStyle()
-    + string UpdateStyle()
-    + string AddStyleToChar()
-}
+' class FightstyleService {
 
-class Move {
-    + string Name
-    + string Description
-    + string Image
-    + string Motion
+'     + FightstyleService()
+'     + string GetStyles()
+'     + string CreateStyle()
+'     + string UpdateStyle()
+'     + string AddStyleToChar()
+' }
 
-    + string GetMoves()
-    + string CreateMove()
-    + string UpdateMove()
-    + string AddMoveToChar()
-}
+' class MoveDto {
+'     + string Name
+'     + string Description
+'     + string Image
+'     + string Motion
+' }
 
-class News {
-    + string Title
-    + string Description
-    + string Image
+' class MoveService {
 
-    + string GetArticles()
-    + string CreateArticle()
-}
+'     + MoveService()
+'     + string GetMoves()
+'     + string CreateMove()
+'     + string UpdateMove()
+'     + string AddMoveToChar()
+' }
 
-class Category {
-    + string Name
+' class NewsDto {
+'     + string Title
+'     + string Description
+'     + string Image
+' }
 
-    + string GetCategories()
-}
+' class NewsService {
 
-Character --> "Move *" Move
-Character --> "Fightstyle 1" Fightstyle
-News --> "Category*" Category
-Gamemode --> "Character *" Character
+'     + NewsService()
+'     + string GetArticles()
+'     + string CreateArticle()
+' }
+
+' class CategoryDto {
+'     + string Name
+' }
+
+' class CategoryService {
+'     + CategoryService()
+'     + string GetCategories()
+' }
+
+DatabaseConnection --> CharacterRepository
+
+CharacterController <-- CharacterService
+CharacterService <-- CharacterDto
+CharacterService <-- ICharacterRepository
+CharacterDto --> ICharacterRepository
+ICharacterRepository <-- CharacterRepository
+
+' NewsService <-- NewsDto
+' CategoryService <-- CategoryDto
+' FightstyleService <-- FightstyleDto
+' MoveService <-- MoveDto
+' GamemodeService <-- GamemodeDto
 
 @enduml

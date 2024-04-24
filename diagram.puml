@@ -6,11 +6,6 @@ class Gamemode {
     + string Name
     + string Description
     + int Amount_players
-
-    + void Gamemode()
-    + string CreateGamemode()
-    + string GetGamemodes()
-    + string AddToGamemode()
 }
 
 
@@ -19,23 +14,12 @@ class Character {
     + string Description
     + string Image
     + bool Newly_added
-
-    + void Character()
-    + string CreateCharacter()
-    + string GetCharacters()
-    + string UpdateCharacter()
-    + bool DetectNewlyAdded()
 }
 
 class Fightstyle {
     + string Name
     + int Power
     + int Speed
-
-    + string GetStyles()
-    + string CreateStyle()
-    + string UpdateStyle()
-    + string AddStyleToChar()
 }
 
 class Move {
@@ -43,26 +27,16 @@ class Move {
     + string Description
     + string Image
     + string Motion
-
-    + string GetMoves()
-    + string CreateMove()
-    + string UpdateMove()
-    + string AddMoveToChar()
 }
 
 class News {
     + string Title
     + string Description
     + string Image
-
-    + string GetArticles()
-    + string CreateArticle()
 }
 
 class Category {
     + string Name
-
-    + string GetCategories()
 }
 
 Character --> "Move *" Move

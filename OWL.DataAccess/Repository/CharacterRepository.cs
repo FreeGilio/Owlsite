@@ -20,13 +20,37 @@ namespace OWL.DataAccess.Repository
             this.databaseConnection = databaseConnection;
         }
 
+        public CharacterDto GetCharacterDtoById(int charId)
+        {
+            CharacterDto result = null;
+
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = "SELECT * FROM character WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Id", charId));
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = MapCharacterDtoFromReader(reader);
+                        }
+                    }
+                }
+            });
+
+            return result;
+        }
+
         public List<CharacterDto> GetAllCharacters()
         {
             List<CharacterDto> characters = new List<CharacterDto>();
 
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "SELECT * FROM Character";
+                string sql = "SELECT * FROM character";
                 using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

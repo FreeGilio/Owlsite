@@ -19,6 +19,13 @@ namespace OWL.Core.Services
             this.characterRepository = characterRepository;
         }
 
+        public Character GetCharacterById(int charId)
+        {
+            CharacterDto charDto = characterRepository.GetCharacterDtoById(charId);
+           
+            return new Character(charDto);
+        }
+
         public List<Character> GetAllCharacters()
         {           
                 List<CharacterDto> characterDtos = characterRepository.GetAllCharacters();

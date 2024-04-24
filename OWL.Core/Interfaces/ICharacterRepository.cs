@@ -9,6 +9,7 @@ namespace OWL.Core.Interfaces
 {
     public interface ICharacterRepository
     {
+        CharacterDto GetCharacterDtoById(int charId);
         List<CharacterDto> GetAllCharacters();
     }
 }

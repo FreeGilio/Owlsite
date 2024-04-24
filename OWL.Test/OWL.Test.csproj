@@ -6,10 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OWL.Core\OWL.Core.csproj" />
-    <ProjectReference Include="..\OWL.DataAccess\OWL.DataAccess.csproj" />
-    <ProjectReference Include="..\OWL\OWL.MVC.csproj" />
-  </ItemGroup>
-
 </Project>

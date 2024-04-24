@@ -2,19 +2,34 @@
     ViewData["Title"] = "Character Page";
 }
 <body>
-    <table>
-        @foreach (var evt in Model)
+    @foreach (var chr in Model)
+    {
+        <div class="character-container">
+            <div onclick="location.href='/Character/CharInfo?id=@chr.Id'" class="char-name">
+                <p> <span class="char-name-color">@chr.Name</span></p>
+                <p class="char-name @(chr.NewlyAdded ? "newly-added-true" : "newly-added-false")">
+                    @if (chr.NewlyAdded)
+                    {
+                        <i class="fas fa-check-circle"></i> <!-- Font Awesome check circle icon -->
+                    }
+                    else
+                    {
+                        <i class="fas fa-times-circle"></i> <!-- Font Awesome times circle icon -->
+                    }
+                </p>
+            </div>  
+        </div>
+    }
+
+    @*@<table>
+        @foreach (var chr in Model)
         {
             <tr>
-                @*<td>@evt.Id</td>*@
-                <td>@evt.Name</td>
-                <td>@evt.Description</td>
-                <td>@evt.NewlyAdded</td>
+                <td>@evt.Id</td>
+                <td>@chr.Name</td>
+                <td>@chr.Description</td>
+                <td>@chr.NewlyAdded</td>
             </tr>
         }
-    </table>
+    </table>*@
 </body>
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>

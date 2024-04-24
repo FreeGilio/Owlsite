@@ -17,5 +17,11 @@ namespace OWL.MVC.Controllers
             var characters = characterService.GetAllCharacters();
             return View(characters);
         }
+
+        public IActionResult CharInfo(int id)
+        {
+            Character characterModel = characterService.GetCharacterById(id);
+            return View(characterModel);
+        }
     }
 }
