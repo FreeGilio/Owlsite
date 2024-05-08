@@ -40,6 +40,12 @@ Class CharacterRepository {
     -  CharacterDto MapCharacterDtoFromReader(SqlDataReader reader)
 }
 
+class Character {
+    + string Name
+    + string Description
+    + string Image
+    + bool Newly_added
+}
 
 class CharacterDto {
     + string Name
@@ -111,13 +117,15 @@ class CharacterService {
 '     + string GetCategories()
 ' }
 
-DatabaseConnection --> CharacterRepository
+DatabaseConnection <-- CharacterRepository
 
-CharacterController <-- CharacterService
-CharacterService <-- CharacterDto
-CharacterService <-- ICharacterRepository
-CharacterDto --> ICharacterRepository
-ICharacterRepository <-- CharacterRepository
+CharacterController --> CharacterService
+Character <-- CharacterService
+CharacterController --> Character
+CharacterService ..> CharacterDto
+CharacterService --> ICharacterRepository
+CharacterDto ..> ICharacterRepository
+ICharacterRepository --> CharacterRepository
 
 ' NewsService <-- NewsDto
 ' CategoryService <-- CategoryDto

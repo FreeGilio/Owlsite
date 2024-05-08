@@ -8,6 +8,7 @@ using System.Data;
 using System.Threading.Tasks;
 using OWL.DataAccess.DB;
 using OWL.Core.DTO;
+using OWL.Core.Models;
 
 namespace OWL.DataAccess.Repository
 {
@@ -26,7 +27,23 @@ namespace OWL.DataAccess.Repository
 
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "SELECT * FROM character WHERE Id = @Id";
+                string sql = @"
+                SELECT
+                    c.Id as Id,
+                    c.Name as Name,
+                    c.Description,
+                    c.Image,
+                    c.NewlyAdded,
+                    fs.Id as FightstyleId,
+                    fs.Name as FightstyleName,
+                    fs.Power,
+                    fs.Speed
+                FROM 
+                    Character c
+                JOIN
+                    Fightstyle fs ON c.fightstyle_id = fs.Id
+                WHERE 
+                    c.Id = @Id";
                 using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Id", charId));
@@ -44,14 +61,50 @@ namespace OWL.DataAccess.Repository
             return result;
         }
 
+        public List<CharacterDto> GetAllCharactersWithFightstyle()
+        {
+            List<CharacterDto> characters = new List<CharacterDto>();
+
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = @"
+                SELECT 
+                    c.Id as Id,
+                    c.Name as Name,
+                    c.Description,
+                    c.Image,
+                    c.NewlyAdded,
+                    fs.Id as FightstyleId,
+                    fs.Name as FightstyleName,
+                    fs.Power,
+                    fs.Speed
+                FROM 
+                    Character c
+                JOIN
+                    Fightstyle fs ON c.fightstyle_id = fs.Id";
+                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        characters.Add(MapCharacterDtoFromReader(reader));
+                    }
+                }
+            });
+
+            return characters;
+        }
+
         public List<CharacterDto> GetAllCharacters()
         {
             List<CharacterDto> characters = new List<CharacterDto>();
 
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "SELECT * FROM character";
+                string sql = "SELECT Name, Image, Description, NewlyAdded FROM character";
                 using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -68,16 +121,18 @@ namespace OWL.DataAccess.Repository
         {
             return new CharacterDto
             {
-                /*Id = (int)reader["Id"],
-                Name = (string)reader["Name"],
-                Description = (string)reader["Description"],
-                Image = (string)reader["Image"],
-                NewlyAdded = (bool)reader["NewlyAdded"]*/
                 Id = (int)reader["Id"],
                 Name = (string)reader["Name"],
                 Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : (string)reader["Description"],
                 Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (string)reader["Image"],
-                NewlyAdded = (bool)reader["NewlyAdded"]
+                NewlyAdded = (bool)reader["NewlyAdded"],
+                Fightstyle = new Fightstyle
+                {
+                    Id = (int)reader["FightstyleId"],
+                    Name = (string)reader["FightstyleName"],
+                    Power = (int)reader["Power"],
+                    Speed = (int)reader["Speed"]
+                }
             };
         }
 

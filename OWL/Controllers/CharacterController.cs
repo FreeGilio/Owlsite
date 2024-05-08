@@ -12,13 +12,13 @@ namespace OWL.MVC.Controllers
         {
             this.characterService = characterService;
         }
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            var characters = characterService.GetAllCharacters();
+            var characters = characterService.GetAllCharactersWithFightstyle();
             return View(characters);
         }
 
-        public IActionResult CharInfo(int id)
+        public ActionResult CharInfo(int id)
         {
             Character characterModel = characterService.GetCharacterById(id);
             return View(characterModel);

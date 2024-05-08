@@ -12,23 +12,23 @@ namespace OWL.Core.Services
 {
     public class CharacterService
     {
-        private readonly ICharacterRepository characterRepository;
+        private readonly ICharacterRepository _characterRepo;
 
         public CharacterService(ICharacterRepository characterRepository)
         {
-            this.characterRepository = characterRepository;
+            this._characterRepo = characterRepository;
         }
 
         public Character GetCharacterById(int charId)
         {
-            CharacterDto charDto = characterRepository.GetCharacterDtoById(charId);
+            CharacterDto charDto = _characterRepo.GetCharacterDtoById(charId);
            
             return new Character(charDto);
         }
 
-        public List<Character> GetAllCharacters()
+        public List<Character> GetAllCharactersWithFightstyle()
         {           
-                List<CharacterDto> characterDtos = characterRepository.GetAllCharacters();
+                List<CharacterDto> characterDtos = _characterRepo.GetAllCharactersWithFightstyle();
                 return Character.MapToCharacters(characterDtos);                   
         }
     }
