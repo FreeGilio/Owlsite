@@ -61,6 +61,42 @@ namespace OWL.DataAccess.Repository
             return result;
         }
 
+        public int AddCharacterDto(CharacterDto characterToAdd)
+        {
+            databaseConnection.StartConnection(connection =>
+            {   
+                       
+                        string sql = "INSERT INTO character (Name, Image, Description, NewlyAdded) VALUES (@Name, @Image, @Description, @NewlyAdded); SELECT SCOPE_IDENTITY();";
+                        using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+                        {
+                            command.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
+                            command.Parameters.Add(new SqlParameter("@Image", characterToAdd.Image));
+                            command.Parameters.Add(new SqlParameter("@Description", characterToAdd.Description));
+                            command.Parameters.Add(new SqlParameter("@NewlyAdded", characterToAdd.NewlyAdded));
+
+                            int characterId = Convert.ToInt32(command.ExecuteScalar());
+
+                            characterToAdd.Id = characterId;
+                        }                             
+            });
+            return characterToAdd.Id;
+        }
+
+        public void DeleteCharacter(CharacterDto charDto)
+        {
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = "DELETE FROM character WHERE id = @id;";
+
+                using (SqlCommand command = new(sql, (SqlConnection)connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@id", charDto.Id));
+
+                    command.ExecuteNonQuery();
+                }
+            });
+        }
+
         public List<CharacterDto> GetAllCharactersWithFightstyle()
         {
             List<CharacterDto> characters = new List<CharacterDto>();

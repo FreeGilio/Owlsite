@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Fontys\Semester2\Herhaling\Owlsite\OWL
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Fontys/Semester2/Herhaling/Owlsite/OWL/Views/Character/AddChar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmFjdGVyXEFkZENoYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Fontys/Semester2/Herhaling/Owlsite/OWL/Views/Character/CharInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhcmFjdGVyXENoYXJJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

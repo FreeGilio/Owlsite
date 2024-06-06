@@ -2,6 +2,7 @@ using OWL.DataAccess.DB;
 using OWL.DataAccess.Repository;
 using OWL.Core.Interfaces;
 using OWL.Core.Services;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,12 +11,18 @@ builder.Services.AddSingleton<DatabaseConnection>(_ => new DatabaseConnection("D
 
 // Register Repositories
 builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
+builder.Services.AddScoped<IFightstyleRepository, FightstyleRepository>();
+builder.Services.AddScoped<IMoveRepository, MoveRepository>();
 
 // Register Services
 builder.Services.AddScoped<CharacterService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add logging services
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); 
 
 var app = builder.Build();
 

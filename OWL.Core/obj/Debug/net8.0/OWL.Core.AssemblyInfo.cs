@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OWL.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+352b384d67aeeb4592d367087b5abb2f592f7d4a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d6c0fcb342a57e63a5cb9ec75e6f78013019d40")]
 [assembly: System.Reflection.AssemblyProductAttribute("OWL.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OWL.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

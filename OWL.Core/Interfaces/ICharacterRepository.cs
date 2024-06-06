@@ -1,4 +1,5 @@
 ﻿using OWL.Core.DTO;
+using OWL.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace OWL.Core.Interfaces
     {
         CharacterDto GetCharacterDtoById(int charId);
         List<CharacterDto> GetAllCharactersWithFightstyle();
-
-        
+        int AddCharacterDto(CharacterDto character);
+        void DeleteCharacter(CharacterDto character);
     }
 }

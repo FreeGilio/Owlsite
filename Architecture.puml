@@ -2,13 +2,6 @@
 
 title OWL Architecture
 
-class DatabaseConnection {
-    + readonly string connectionString
-    + DatabaseConnection(connectionString)
-
-    + void StartConnection()
-}
-
 ' class GamemodeDto {
 '     + string Name
 '     + string Description
@@ -22,22 +15,21 @@ class DatabaseConnection {
 '     + string GetGamemodes()
 '     + string AddToGamemode()
 ' }
-
+package Presentation <<Rectangle>> {
 Class CharacterController {
     - readonly CharacterService
 
     + CharacterController
     + Index()
 }
-
-Interface ICharacterRepository {
-    +  List<CharacterDto> GetAllCharacters();
 }
 
-Class CharacterRepository {
-    +  CharacterRepository(DatabaseConnection)
-    +  List<CharacterDto> GetAllCharacters()
-    -  CharacterDto MapCharacterDtoFromReader(SqlDataReader reader)
+package Core <<Rectangle>> {
+Interface ICharacterRepository {
+    +  List<CharacterDto> GetAllCharactersWithFightStyle();
+    + CharacterDto GetCharacterDtoById(Int charId);
+    + Int AddCharacterDto (CharacterDto Character);
+    + Void DeleteCharacter(CharacterDto Character);
 }
 
 class Character {
@@ -63,6 +55,23 @@ class CharacterService {
     + string UpdateCharacter()
     + bool DetectNewlyAdded()
 }
+}
+
+package DAL <<Rectangle>> {
+
+class DatabaseConnection {
++ readonly string connectionString
++ DatabaseConnection(connectionString)
+
++ void StartConnection()
+}
+Class CharacterRepository {
+    +  CharacterRepository(DatabaseConnection)
+    +  List<CharacterDto> GetAllCharacters()
+    -  CharacterDto MapCharacterDtoFromReader(SqlDataReader reader)
+}
+}
+
 
 ' class FightstyleDto {
 '     + string Name
@@ -119,13 +128,14 @@ class CharacterService {
 
 DatabaseConnection <-- CharacterRepository
 
-CharacterController --> CharacterService
-Character <-- CharacterService
-CharacterController --> Character
-CharacterService ..> CharacterDto
+CharacterController "1 CharacterService"--> CharacterService
+Character "<<uses>>"<.. CharacterService
+CharacterController "<<uses>>"..> Character
+CharacterService "<<uses>>"..> CharacterDto
+CharacterRepository "<<uses>>"..> CharacterDto
 CharacterService --> ICharacterRepository
-CharacterDto ..> ICharacterRepository
-ICharacterRepository --> CharacterRepository
+CharacterDto "<<uses>>" <.. ICharacterRepository
+ICharacterRepository  <|.. CharacterRepository
 
 ' NewsService <-- NewsDto
 ' CategoryService <-- CategoryDto

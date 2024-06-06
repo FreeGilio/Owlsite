@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\OWL.MVC.bundle.scp.css"
     },
     {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\AddChar.css",
+      "PackagePath": "staticwebassets\\css\\AddChar.css"
+    },
+    {
       "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\CharacterPage.css",
       "PackagePath": "staticwebassets\\css\\CharacterPage.css"
     },

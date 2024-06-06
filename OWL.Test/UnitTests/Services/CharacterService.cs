@@ -3,6 +3,7 @@ using Moq;
 using OWL.Core.Interfaces;
 using OWL.Core.DTO;
 using OWL.Core.Services;
+using OWL.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,18 @@ namespace OWL.Test.UnitTests.Services
             //Assert
             Assert.NotNull(result);
             Assert.Equal(dummyCharacterDtos.Count, result.Count);
+        }
+
+        [Fact]
+        public void AddCharacter_ShouldCallAddCharacterDto_WhenCalled()
+        {
+            var mockCharacterRepository = new Mock<ICharacterRepository>();
+
+            var characterService = new CharacterService(mockCharacterRepository.Object);
+
+            characterService.AddCharacter(new Character());
+
+            mockCharacterRepository.Verify(repo => repo.AddCharacterDto(It.IsAny<CharacterDto>()), Times.Once);
         }
     }
 }

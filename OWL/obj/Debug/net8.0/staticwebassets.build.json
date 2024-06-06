@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nhMFcXUI81RPkVmxiI0QSboKZ8Kn2PpITmi2mrEiU7k=",
+  "Hash": "5StKPrstqpH9yNbsBG2F+I9tDayns74srXvbVEqAGnE=",
   "Source": "OWL.MVC",
   "BasePath": "_content/OWL.MVC",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\OWL.MVC.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\AddChar.css",
+      "SourceId": "OWL.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\",
+      "BasePath": "_content/OWL.MVC",
+      "RelativePath": "css/AddChar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\AddChar.css"
     },
     {
       "Identity": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\CharacterPage.css",
