@@ -2,6 +2,7 @@ using OWL.DataAccess.DB;
 using OWL.DataAccess.Repository;
 using OWL.Core.Interfaces;
 using OWL.Core.Services;
+using OWL.Core.Models;
 using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,9 +14,19 @@ builder.Services.AddSingleton<DatabaseConnection>(_ => new DatabaseConnection("D
 builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
 builder.Services.AddScoped<IFightstyleRepository, FightstyleRepository>();
 builder.Services.AddScoped<IMoveRepository, MoveRepository>();
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
 
 // Register Services
 builder.Services.AddScoped<CharacterService>();
+builder.Services.AddScoped<FightstyleService>();
+builder.Services.AddScoped<MoveService>();
+builder.Services.AddScoped<NewsService>();
+
+// Register Models
+builder.Services.AddScoped<Character>();
+builder.Services.AddScoped<Fightstyle>();
+builder.Services.AddScoped<Move>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

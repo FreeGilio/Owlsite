@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "NewsInfo";
+}
+
+<body>
+
+    <div class="container">
+        <div class="image">
+            <img src="@Model.Image" alt="Character Image" class="bd-placeholder-img card-img-top">
+        </div>
+        <div class="content">
+            <h4>@Model.Category.Name</h4>
+            <h2> @Model.Title</h2>
+            <h4> @Model.Description</h4>
+            <h5>@Model.Date</h5>
+        </div>
+    </div>
+
+</body>

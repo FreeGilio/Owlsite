@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using OWL.DataAccess.DB;
 using OWL.Core.DTO;
 using OWL.Core.Models;
+using OWL.Core.CustomExceptions;
 
 namespace OWL.DataAccess.Repository
 {
@@ -52,7 +53,14 @@ namespace OWL.DataAccess.Repository
                     {
                         if (reader.Read())
                         {
-                            result = MapCharacterDtoFromReader(reader);
+                            if (string.IsNullOrEmpty(reader.GetString(1)))
+                            {
+                                throw new CharacterNotFoundException("Character has not been found", reader.GetString(1));
+                            }
+                            else
+                            {
+                                result = MapCharacterDtoFromReader(reader);
+                            }                        
                         }
                     }
                 }
@@ -61,32 +69,45 @@ namespace OWL.DataAccess.Repository
             return result;
         }
 
-        public int AddCharacterDto(CharacterDto characterToAdd)
+        public void UpdateNewlyAdded()
+        {
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = "UPDATE Character SET NewlyAdded = false WHERE NewlyAdded = true;";
+                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+                {                  
+                    command.ExecuteNonQuery();
+                }
+            });
+
+        }
+
+        public bool AddCharacterDto(CharacterDto characterToAdd)
         {
             databaseConnection.StartConnection(connection =>
             {   
                        
-                        string sql = "INSERT INTO character (Name, Image, Description, NewlyAdded) VALUES (@Name, @Image, @Description, @NewlyAdded); SELECT SCOPE_IDENTITY();";
+                        string sql = "INSERT INTO Character (Name, Image, Description, NewlyAdded, Fightstyle_id) VALUES (@Name, @Image, @Description, @NewlyAdded, @Fighstyleid);";
                         using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
                         {
                             command.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
                             command.Parameters.Add(new SqlParameter("@Image", characterToAdd.Image));
                             command.Parameters.Add(new SqlParameter("@Description", characterToAdd.Description));
-                            command.Parameters.Add(new SqlParameter("@NewlyAdded", characterToAdd.NewlyAdded));
+                            command.Parameters.Add(new SqlParameter("@NewlyAdded", true));
+                            command.Parameters.Add(new SqlParameter("@Fightstyleid", characterToAdd.Fightstyle.Id));
 
-                            int characterId = Convert.ToInt32(command.ExecuteScalar());
-
-                            characterToAdd.Id = characterId;
-                        }                             
+                    command.ExecuteNonQuery();
+                            
+                }                             
             });
-            return characterToAdd.Id;
+            return true;
         }
 
         public void DeleteCharacter(CharacterDto charDto)
         {
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "DELETE FROM character WHERE id = @id;";
+                string sql = "DELETE FROM Character WHERE Id = @id;";
 
                 using (SqlCommand command = new(sql, (SqlConnection)connection))
                 {
@@ -138,7 +159,7 @@ namespace OWL.DataAccess.Repository
 
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "SELECT Name, Image, Description, NewlyAdded FROM character";
+                string sql = "SELECT Name, Image, Description, NewlyAdded FROM Character";
                 using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
 
                 using (SqlDataReader reader = command.ExecuteReader())

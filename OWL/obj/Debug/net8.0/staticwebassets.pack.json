@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\CharacterPage.css"
     },
     {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\News.css",
+      "PackagePath": "staticwebassets\\css\\News.css"
+    },
+    {
       "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

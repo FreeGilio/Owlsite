@@ -23,7 +23,13 @@
 
     <div class="text-right" style="width: 80%; margin: 0 auto;">
        
-        <a class="btn btn-primary btn-lg" href="@Url.Action("AddChar", "Character")" role="button">Create Character</a>
+        <a class="btn btn-primary" role="button" asp-controller="Character" asp-action="AddChar">
+            Create Character
+        </a>
+
+        <a class="btn btn-primary" role="button" asp-controller="Fightstyle" asp-action="AddFightstyle">
+            Create Fightstyle
+        </a>
     </div>
 
     @*@<table>

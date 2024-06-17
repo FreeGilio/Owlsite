@@ -22,6 +22,7 @@ namespace OWL.DataAccess.DB
             {
                 connection.Open();
                 action.Invoke(connection);
+                connection.Close();
             }
         }
     }

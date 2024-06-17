@@ -1,0 +1,14 @@
+﻿.News-name p {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+.News-subname p {
+    font-size: 1.2rem;
+    text-align: left;
+    color: black;
+}
+
+

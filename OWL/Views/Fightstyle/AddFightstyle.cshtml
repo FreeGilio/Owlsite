@@ -1,0 +1,49 @@
+﻿@model OWL.Core.Models.Fightstyle
+
+@{
+    ViewData["Title"] = "Create Fightstyle";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/AddChar.css" />
+
+<body>
+    <div class="body">
+        <h1>Create a fightstyle</h1>
+        @using (Html.BeginForm("CreateFightstyle", "Fightstyle", FormMethod.Post))
+        {
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Name</label>
+                    @Html.TextBoxFor(m => m.Name, new { @required = "required", placeholder = "Kung fu" })
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The name of the fightstyle. It's required</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="power">Power</label>
+                    @Html.TextBoxFor(m => m.Power, new { @type = "number", min = "1", max = "10", placeholder = "5" })
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The amount of power in numbers between 1 and 10</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="speed">Speed</label>
+                    @Html.TextBoxFor(m => m.Speed, new { @type = "number", min = "1", max = "10", placeholder = "3" })
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The amount of speed in numbers between 1 and 10</h1>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Create fightstyle</button>
+            </div>
+        }
+    </div>
+</body>

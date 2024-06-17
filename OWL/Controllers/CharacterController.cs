@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using OWL.Core.Models;
 using OWL.Core.Services;
@@ -9,15 +10,12 @@ namespace OWL.MVC.Controllers
     public class CharacterController : Controller
     {
         private readonly CharacterService characterService;
+        private readonly FightstyleService fightstyleService;
 
-        public CharacterController(CharacterService characterService)
+        public CharacterController(CharacterService characterService, FightstyleService fightstyleService)
         {
             this.characterService = characterService;
-        }
-        public ActionResult Index()
-        {
-            var characters = characterService.GetAllCharactersWithFightstyle();
-            return View(characters);
+            this.fightstyleService = fightstyleService;
         }
 
         public ActionResult CharInfo(int id)
@@ -26,22 +24,36 @@ namespace OWL.MVC.Controllers
             return View(characterModel);
         }
 
-        public void btnAddChar_Click(object sender, EventArgs e)
+        [HttpGet]
+        public IActionResult AddChar()
         {
-            Response.Redirect("AddChar.cshtml");
+            var fightstyles = fightstyleService.GetAllFightstyles();
+            ViewBag.Fightstyles = new SelectList(fightstyles, "Id", "Name");
+            return View(new Character());
         }
-            
-        public void AddChar(string name, string image, string description, bool newlyAdded)
-        {
 
-            Character characterModel = new Character
+        [HttpPost]
+        public IActionResult AddChar(Character characterToBeAdded, int selectedStyleId)
+        {
+            if (ModelState.IsValid)
             {
-                Name = name,
-                Image = image,
-                Description = description,
-                NewlyAdded = newlyAdded
-            };
-            characterService.AddCharacter(characterModel);
+                characterToBeAdded.FightStyle = fightstyleService.GetFightstyleById(selectedStyleId);
+                //characterService.UpdateNewlyAdded();
+                characterService.AddCharacter(characterToBeAdded);
+
+                return RedirectToAction("Index", "Character");
+            }
+
+            var fightstyles = fightstyleService.GetAllFightstyles();
+            ViewBag.Fightstyles = new SelectList(fightstyles, "Id", "Name");
+            return View(characterToBeAdded);
         }
+
+        public IActionResult Index()
+        {
+            var characters = characterService.GetAllCharactersWithFightstyle();
+            return View(characters);
+        }
+
     }
 }

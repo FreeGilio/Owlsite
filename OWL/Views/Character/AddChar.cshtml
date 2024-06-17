@@ -1,7 +1,7 @@
 ﻿@model OWL.Core.Models.Character
 
 @{
-    ViewData["Title"] = "CreateCharacter";
+    ViewData["Title"] = "Create Character";
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/AddChar.css" />
@@ -9,84 +9,55 @@
 <body>
     <div class="body">
         <h1>Add Character</h1>
+        @using (Html.BeginForm("AddChar", "Character", FormMethod.Post))
+        {
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Name</label>
+                    @Html.TextBoxFor(m => m.Name, new { placeholder = "John Doe" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The name of the character. Is required</h1>
+                </div>
+            </div>
 
-        <div class ="grid-container">
-            <div class="main-divs grid-item">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="John Doe">
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="description">Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { placeholder = "A warrior from another world" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Write down a short description of the character</h1>
+                </div>
             </div>
-            <div class="tip-text grid-item">
-                <h1>The name of the character. Is required</h1>
-            </div>
-        </div>
 
-        <div class="grid-container">
-            <div class="main-divs grid-item">
-                <label for="description">Description</label>
-                <input type="text" id="description" placeholder="A warrior from another world">
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="image">Image</label>
+                    @Html.TextBoxFor(m => m.Image, new { placeholder = "https://example.com" })
+                    @Html.ValidationMessageFor(m => m.Image)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Image for the character</h1>
+                </div>
             </div>
-            <div class="tip-text grid-item">
-                <h1>Write down a short description of the character</h1>
-            </div>
-        </div>
 
-        <div class="grid-container">
-            <div class="main-divs grid-item">
-                <label for="image">Image</label>
-                <input type="text" id="image" placeholder="https.example.com">
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="fightstyle">Fightstyle</label>
+                    @Html.DropDownList("selectedStyleId", (SelectList)ViewBag.Fightstyles, "Select Fightstyle")
+                    @Html.ValidationMessage("selectedStyleId")
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Select the fightstyle of the character</h1>
+                </div>
             </div>
-            <div class="tip-text grid-item">
-                <h1>Image for the character</h1>
+
+            <div>
+                <button type="submit">Create Character</button>
             </div>
-        </div>
-
-        <div class="grid-container">
-            <label for="newlyAdded">New Character?</label>
-            @Html.DropDownListFor(m => m.NewlyAdded, new SelectList(new[] { true, false }), new { id = "newlyAdded"})
-        </div>
-
-        <div>
-            <input class="confirm" type="submit" value="Add" onclick="submitCharacter()">
-            <input class="cancel" type="submit2" value="Cancel" onclick="cancelCharacter()">
-        </div>
+        }
     </div>
 </body>
-
-<script>
-    function submitCharacter() {
-        var name = document.getElementById("name").value;
-        var description = document.getElementById("description").value;
-        var image = document.getElementById("image").value;
-        var newlyadded = document.getElementById("newlyAdded").value;
-
-        if (image === '') {
-            image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Unknown-human-picture.png/600px-Unknown-human-picture.png';
-        }
-
-        if (name === '') {
-            alert('Please give the character a name');
-        } else {
-            $.ajax({
-                url: '/Character/Submit',
-                type: 'POST',
-                data: { name: name, description: description, image: image, newlyadded: newlyadded},
-                success: function (data) {
-                    console.log(data);
-                    alert('Success');
-                    location.href = '/Character';
-                },
-                error: function (error) {
-                    alert('Success'); // This should probably be a different message indicating an error.
-                    location.href = '/Character';
-                    console.log("error", error);
-                }
-            });
-        }
-    }
-
-    function cancelCharacter() {
-        if (confirm('Are you sure you want to cancel?') == true) {
-            location.href = '/Character';
-        }
-    }
-</script>

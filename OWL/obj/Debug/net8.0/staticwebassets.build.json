@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5StKPrstqpH9yNbsBG2F+I9tDayns74srXvbVEqAGnE=",
+  "Hash": "jwh752QYOUKm/3MxXii4KA2JWGEA3qSY+Q08AzD6wow=",
   "Source": "OWL.MVC",
   "BasePath": "_content/OWL.MVC",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\CharacterPage.css"
+    },
+    {
+      "Identity": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\News.css",
+      "SourceId": "OWL.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\",
+      "BasePath": "_content/OWL.MVC",
+      "RelativePath": "css/News.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\News.css"
     },
     {
       "Identity": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\site.css",
