@@ -12,8 +12,7 @@ namespace OWL.Core.Interfaces
     {
         CharacterDto GetCharacterDtoById(int charId);
         List<CharacterDto> GetAllCharactersWithFightstyle();
-        void UpdateNewlyAdded();
-        bool AddCharacterDto(CharacterDto characterToAdd);
+        void AddCharacterDto(CharacterDto characterToAdd);
         void DeleteCharacter(CharacterDto character);
     }
 }

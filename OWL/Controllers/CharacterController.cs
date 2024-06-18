@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using OWL.Core.CustomExceptions;
 using OWL.Core.Models;
 using OWL.Core.Services;
 using System.Security.Claims;
@@ -34,15 +35,25 @@ namespace OWL.MVC.Controllers
 
         [HttpPost]
         public IActionResult AddChar(Character characterToBeAdded, int selectedStyleId)
-        {
-            if (ModelState.IsValid)
-            {
-                characterToBeAdded.FightStyle = fightstyleService.GetFightstyleById(selectedStyleId);
-                //characterService.UpdateNewlyAdded();
-                characterService.AddCharacter(characterToBeAdded);
-
-                return RedirectToAction("Index", "Character");
-            }
+        {   
+                try
+                {
+                  try
+                  {
+                    characterToBeAdded.FightStyle = fightstyleService.GetFightstyleById(selectedStyleId);
+                    characterService.AddCharacter(characterToBeAdded);
+                    return RedirectToAction("Index", "Character");
+                  }
+                  catch (FightstyleTiedToCharacterException ex)
+                  {
+                    ModelState.AddModelError("Name", ex.Message);
+                  }
+                   
+                }
+                catch (NameExistsException ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }           
 
             var fightstyles = fightstyleService.GetAllFightstyles();
             ViewBag.Fightstyles = new SelectList(fightstyles, "Id", "Name");
@@ -53,6 +64,18 @@ namespace OWL.MVC.Controllers
         {
             var characters = characterService.GetAllCharactersWithFightstyle();
             return View(characters);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteCharacter(int id)
+        {
+            var character = characterService.GetCharacterById(id);
+            if (character != null)
+            {
+                characterService.DeleteCharacter(character);
+                return RedirectToAction("Index", "Character");
+            }
+            return NotFound();
         }
 
     }

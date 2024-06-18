@@ -36,7 +36,7 @@ namespace OWL.DataAccess.Repository
                     {
                         if (reader.Read())
                         {
-                            if (string.IsNullOrEmpty(reader.GetString(0)))
+                            if (reader.IsDBNull(0))
                             {
                                 throw new IdNotFoundException("Fightstyle with this Id has not been found", reader.GetInt32(0));
                             }
@@ -81,7 +81,7 @@ namespace OWL.DataAccess.Repository
                     insertCommand.ExecuteNonQuery();
                 }
             });
-        }
+        }      
 
         public List<FightstyleDto> GetAllFightstyles()
         {

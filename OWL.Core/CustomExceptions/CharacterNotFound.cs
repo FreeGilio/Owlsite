@@ -9,17 +9,13 @@ namespace OWL.Core.CustomExceptions
     [Serializable]
     public class CharacterNotFoundException : Exception
     {
-        public string Name { get; }
-
         public CharacterNotFoundException() { }
 
-        public CharacterNotFoundException(string message)
-            : base(message) { }
-
-        public CharacterNotFoundException(string message, string name)
-            : this(message)
+        public CharacterNotFoundException(string name)
+        : base(String.Format("Character name cannot be found: {0}", name))
         {
-            Name = name;
+
         }
+
     }
 }

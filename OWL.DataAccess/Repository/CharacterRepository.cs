@@ -10,6 +10,7 @@ using OWL.DataAccess.DB;
 using OWL.Core.DTO;
 using OWL.Core.Models;
 using OWL.Core.CustomExceptions;
+using System.Transactions;
 
 namespace OWL.DataAccess.Repository
 {
@@ -55,7 +56,7 @@ namespace OWL.DataAccess.Repository
                         {
                             if (string.IsNullOrEmpty(reader.GetString(1)))
                             {
-                                throw new CharacterNotFoundException("Character has not been found", reader.GetString(1));
+                                throw new CharacterNotFoundException(reader.GetString(1));
                             }
                             else
                             {
@@ -69,52 +70,117 @@ namespace OWL.DataAccess.Repository
             return result;
         }
 
+        public void CheckFightstyleTiedToCharacter(CharacterDto characterToAdd)
+        {
+            databaseConnection.StartConnection(connection =>
+            {
+                string checkMatchSql = @"
+            SELECT 
+                c.Id as Id,
+                c.Name as Name,
+                c.Description,
+                c.Image,
+                c.NewlyAdded,
+                fs.Id as FightstyleId,
+                fs.Name as FightstyleName,
+                fs.Power,
+                fs.Speed
+            FROM 
+                Character c
+            JOIN
+                Fightstyle fs ON c.fightstyle_id = fs.Id
+            WHERE
+                fs.Name = @FightstyleName;
+        ";
+
+                using (SqlCommand checkMatchCommand = new SqlCommand(checkMatchSql, (SqlConnection)connection))
+                {
+                    checkMatchCommand.Parameters.Add(new SqlParameter("@FightstyleName", characterToAdd.Fightstyle.Name));
+
+                    using (SqlDataReader reader = checkMatchCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            throw new FightstyleTiedToCharacterException("A character is already tied with this fightstyle.", characterToAdd.Name, characterToAdd.Fightstyle.Name);
+                        }
+                    }
+                }
+            });
+        }
+
         public void UpdateNewlyAdded()
         {
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "UPDATE Character SET NewlyAdded = false WHERE NewlyAdded = true;";
-                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
-                {                  
+                string updatesql = "UPDATE Character SET NewlyAdded = 0 WHERE NewlyAdded = 1;";
+                using (SqlCommand command = new SqlCommand(updatesql, (SqlConnection)connection))
+                {
                     command.ExecuteNonQuery();
                 }
             });
-
+          
         }
 
-        public bool AddCharacterDto(CharacterDto characterToAdd)
+        public void AddCharacterDto(CharacterDto characterToAdd)
         {
             databaseConnection.StartConnection(connection =>
-            {   
-                       
-                        string sql = "INSERT INTO Character (Name, Image, Description, NewlyAdded, Fightstyle_id) VALUES (@Name, @Image, @Description, @NewlyAdded, @Fighstyleid);";
-                        using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
-                        {
-                            command.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
-                            command.Parameters.Add(new SqlParameter("@Image", characterToAdd.Image));
-                            command.Parameters.Add(new SqlParameter("@Description", characterToAdd.Description));
-                            command.Parameters.Add(new SqlParameter("@NewlyAdded", true));
-                            command.Parameters.Add(new SqlParameter("@Fightstyleid", characterToAdd.Fightstyle.Id));
+            {
+                // First, check if the Name already exists in the database
+                string checknameSql = "SELECT COUNT(*) FROM Character WHERE Name = @Name;";
+                using (SqlCommand checkCommand = new SqlCommand(checknameSql, (SqlConnection)connection))
+                {
+                    checkCommand.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
+                    int count = (int)checkCommand.ExecuteScalar();
 
-                    command.ExecuteNonQuery();
+                    if (count > 0)
+                    {
+                        // Name already exists, handle the error
+                        throw new NameExistsException("A character with this name already exists.", characterToAdd.Name);
+                    }
+                }
+
+                CheckFightstyleTiedToCharacter(characterToAdd);
+                UpdateNewlyAdded();         
+
+                string insertSql = "INSERT INTO Character (Name, Image, Description, NewlyAdded, Fightstyle_id) VALUES (@Name, @Image, @Description, @NewlyAdded, @Fightstyle_id);";
+                        using (SqlCommand insertCommand = new SqlCommand(insertSql, (SqlConnection)connection))
+                        {
+                            insertCommand.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
+                            insertCommand.Parameters.Add(new SqlParameter("@Image", characterToAdd.Image));
+                            insertCommand.Parameters.Add(new SqlParameter("@Description", characterToAdd.Description));
+                            insertCommand.Parameters.Add(new SqlParameter("@NewlyAdded", true));
+                            insertCommand.Parameters.Add(new SqlParameter("@Fightstyle_id", characterToAdd.Fightstyle.Id));
+
+                            insertCommand.ExecuteNonQuery();
                             
                 }                             
             });
-            return true;
         }
 
         public void DeleteCharacter(CharacterDto charDto)
         {
             databaseConnection.StartConnection(connection =>
             {
-                string sql = "DELETE FROM Character WHERE Id = @id;";
 
-                using (SqlCommand command = new(sql, (SqlConnection)connection))
+                // Delete the character
+                string deleteSql = "DELETE FROM Character WHERE Id = @Id;";
+                using (SqlCommand deleteCommand = new SqlCommand(deleteSql, (SqlConnection)connection))
                 {
-                    command.Parameters.Add(new SqlParameter("@id", charDto.Id));
-
-                    command.ExecuteNonQuery();
+                    deleteCommand.Parameters.Add(new SqlParameter("@Id", charDto.Id));
+                    deleteCommand.ExecuteNonQuery();
                 }
+
+                // Optionally reset the auto-increment value if required
+                // This step is usually not necessary as SQL Server handles it automatically
+                string resetAutoIncrementSql = @"
+                    DECLARE @MaxId INT;
+                    SELECT @MaxId = ISNULL(MAX(Id), 0) FROM Character;
+                    DBCC CHECKIDENT ('Character', RESEED, @MaxId);
+                ";
+                using (SqlCommand resetCommand = new SqlCommand(resetAutoIncrementSql, (SqlConnection)connection))
+                {
+                    resetCommand.ExecuteNonQuery();
+                }          
             });
         }
 
@@ -151,7 +217,7 @@ namespace OWL.DataAccess.Repository
             });
 
             return characters;
-        }
+        }       
 
         public List<CharacterDto> GetAllCharacters()
         {

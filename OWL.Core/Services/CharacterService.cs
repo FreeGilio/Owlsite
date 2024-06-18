@@ -27,7 +27,7 @@ namespace OWL.Core.Services
         {        
                 if (string.IsNullOrEmpty(charId.ToString()))
                 {
-                    throw new CharacterNotFoundException("Character ID has not been found", charId.ToString());
+                    throw new IdNotFoundException("Character ID has not been found", charId);
                 }
                 else
                 {
@@ -51,43 +51,16 @@ namespace OWL.Core.Services
             }                 
         }
 
-        public void UpdateNewlyAdded()
-        {
-            try
-            {
-               _characterRepo.UpdateNewlyAdded();
-            }
-            catch (Exception ex)
-            {
-                OwlLogger.LogError("Error updating the 'NewlyAdded' column", ex);
-                throw; 
-            }
-        }
-
-
         public void AddCharacter(Character characterToAdd)
         {
 
             if (string.IsNullOrEmpty(characterToAdd.Name))
             {
-                throw new ArgumentException("Character name is required.");
+                throw new NameRequiredException("Character name is required.");
             }
             else
             {
-                CharacterDto charDto = new CharacterDto
-                {
-                    Name = characterToAdd.Name,
-                    Description = characterToAdd.Description,
-                    Image = characterToAdd.Image,
-                    NewlyAdded = characterToAdd.NewlyAdded,
-                    Fightstyle = new Fightstyle
-                    {
-                        Id = characterToAdd.FightStyle.Id,
-                        Name = characterToAdd.FightStyle.Name,
-                        Power = characterToAdd.FightStyle.Power,
-                        Speed = characterToAdd.FightStyle.Speed
-                    }
-                };
+                CharacterDto charDto = new CharacterDto(characterToAdd);   
                 _characterRepo.AddCharacterDto(charDto);
             }
         }

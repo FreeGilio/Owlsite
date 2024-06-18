@@ -11,7 +11,7 @@ namespace OWL.Core.CustomExceptions
 
     public class NameExistsException : Exception
     {
-        public string Name { get; }
+        public string ExistingName { get; }
 
         public NameExistsException() { }
 
@@ -21,7 +21,7 @@ namespace OWL.Core.CustomExceptions
         public NameExistsException(string message, string name)
             : this(message)
         {
-            Name = name;
+            ExistingName = name;
         }
     }
 }

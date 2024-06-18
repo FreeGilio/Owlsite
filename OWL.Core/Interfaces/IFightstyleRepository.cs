@@ -10,7 +10,7 @@ namespace OWL.Core.Interfaces
     public interface IFightstyleRepository
     {
         FightstyleDto GetFightstyleDtoById(int styleId);
-        List<FightstyleDto> GetAllFightstyles();
+        List<FightstyleDto> GetAllFightstyles();    
         void AddFightstyleDto(FightstyleDto styleToAdd);
     }
 }
