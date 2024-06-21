@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JAAt4aOy4xE/7U/3tik1tQ4TxQpiVZSfT4HzNpb5nawu1ifqwN2lDUmdBtRXLW5EaCAlLVGbZznnbhaCliz9VA==",
+  "dgSpecHash": "rHwqcqcSZEaZMndEg2Deuk2ZOElHGMU/Z8rjLc1v2gohhKmyvitUd62e3imjTDRO8/RKR2kdRaIeTudm3lbDTA==",
   "success": true,
   "projectFilePath": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Test\\OWL.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\humpr\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\humpr\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
@@ -66,6 +67,7 @@
     "C:\\Users\\humpr\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\humpr\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",

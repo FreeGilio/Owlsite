@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets\\OWL.MVC.bundle.scp.css"
     },
     {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\Characters\\Unknown.png",
+      "PackagePath": "staticwebassets\\Images\\Characters\\Unknown.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\Characters\\giliorender_638545891849105816.png",
+      "PackagePath": "staticwebassets\\Images\\Characters\\giliorender_638545891849105816.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\Characters\\yagorender_638545816162672107.png",
+      "PackagePath": "staticwebassets\\Images\\Characters\\yagorender_638545816162672107.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\Characters\\zyrender_638545816372390099.png",
+      "PackagePath": "staticwebassets\\Images\\Characters\\zyrender_638545816372390099.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\News\\Fighting_game_screen_mock_up_638545960185543009.png",
+      "PackagePath": "staticwebassets\\Images\\News\\Fighting_game_screen_mock_up_638545960185543009.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\News\\Question.png",
+      "PackagePath": "staticwebassets\\Images\\News\\Question.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\Images\\News\\Sonica_638545960806811623.png",
+      "PackagePath": "staticwebassets\\Images\\News\\Sonica_638545960806811623.png"
+    },
+    {
+      "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\AddArticle.css",
+      "PackagePath": "staticwebassets\\css\\AddArticle.css"
+    },
+    {
       "Id": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\wwwroot\\css\\AddChar.css",
       "PackagePath": "staticwebassets\\css\\AddChar.css"
     },

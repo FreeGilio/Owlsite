@@ -5,19 +5,23 @@
 <body>
     <h1 class="display-4">Latest News</h1>
 
-    @foreach (var nw in Model)
-    {
-        <div class="character-container">
-            <div onclick="location.href='/News/NewsInfo?id=@nw.Id'" class="char-name">
-                <p> <span class="news-name">@nw.Title</span></p>
-                <p> <span class="news-subname">@nw.Category.Name</span></p>
-                <p> <span class="news-subname">@nw.Date</span></p>
+    <div class="characters-wrapper">
+        @foreach (var nw in Model)
+        {
+            <div class="character-container">
+                <div onclick="location.href='/News/NewsInfo?id=@nw.Id'" class="char-name">
+                    <p> <span class="news-name">@nw.Title</span></p>
+                    <p> <span class="news-subname">@nw.Category.Name</span></p>
+                    <p> <span class="news-subname">@nw.Date</span></p>
+                </div>
             </div>
-        </div>
-    }
+        }
+    </div>
+
+    <div class="text-right" style="width: 0%; margin: 0 auto; padding: 20px;">
+    <a class="btn btn-primary" role="button" asp-controller="News" asp-action="AddArticle">
+        Create Article
+    </a>
+    </div>
 </body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>

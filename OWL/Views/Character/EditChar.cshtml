@@ -1,0 +1,71 @@
+﻿@model OWL.Core.Models.Character
+
+@{
+    ViewData["Title"] = "Edit Character";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/AddChar.css" />
+
+<body>
+    <div class="body">
+        <h1>Edit character</h1>
+        @using (Html.BeginForm("EditChar", "Character", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Name</label>
+                    @Html.TextBoxFor(m => m.Name, new { placeholder = Model.Name })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The name of the character. Is required</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="description">Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { placeholder = Model.Description })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Write down a short description of the character</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">                   
+                    <label for="imageFile">Upload New Image</label>                
+                    <input type="file" name="imageFile" id="imageFile" accept="image/*" />
+                    @Html.ValidationMessage("Image")
+                    @if (!string.IsNullOrEmpty(Model.Image) && Model.Image != "/Images/Characters/Unknown.png")
+                    {
+                        <div>
+                            <img src="@Model.Image" alt="Character Image" style="max-width: 200px; max-height: 200px;" />
+                        </div>
+                    }
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Image for the character</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="fightstyle">Fightstyle</label>
+                    @Html.DropDownList("selectedStyleId", (SelectList)ViewBag.Fightstyles, "Select Fightstyle")
+                    @Html.ValidationMessage("selectedStyleId")
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Select the fightstyle of the character</h1>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Edit Character</button>
+            </div>
+        }
+    </div>
+</body>

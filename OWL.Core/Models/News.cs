@@ -18,16 +18,17 @@ namespace OWL.Core.Models
 
         public string Image { get;  set; }
 
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
 
         public Category Category { get; set; }
 
-        public News(int id, string title, string description, string image, Category category) 
+        public News(int id, string title, string description, string image, DateOnly date, Category category) 
         { 
             Id = id;
             Title = title;
             Description = description;
             Image = image;
+            Date = date;
             Category = category;
         }
 

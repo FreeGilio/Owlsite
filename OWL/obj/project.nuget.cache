@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3K+VGP/xpfpvZJYzkmJQc3R7D63Aftg7pV+G5M8hONw0U53PQ8/0mF9eV/asw1aPQgw3dFVxXFlbUL0+qDiukQ==",
+  "dgSpecHash": "fS+SQMsg1GyEza+TvnpzUXnUgIyO7D+m52kji7JUWi9hRi9PbJ6XgmHzmRet0puWImRedskxwip9KTQq/DawAw==",
   "success": true,
   "projectFilePath": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL\\OWL.MVC.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\humpr\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\8.0.0\\microsoft.extensions.configuration.fileextensions.8.0.0.nupkg.sha512",
@@ -20,6 +21,7 @@
     "C:\\Users\\humpr\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.data.sqlclient\\4.8.6\\system.data.sqlclient.4.8.6.nupkg.sha512",
+    "C:\\Users\\humpr\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\humpr\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",

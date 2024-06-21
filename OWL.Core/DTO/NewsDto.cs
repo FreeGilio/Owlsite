@@ -18,7 +18,7 @@ namespace OWL.Core.DTO
 
         public string Image { get;  set; }
 
-        public DateTime Date {  get; set; }
+        public DateOnly Date {  get; set; }
 
         public Category Category { get; set; }
 

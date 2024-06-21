@@ -11,21 +11,30 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<DatabaseConnection>(_ => new DatabaseConnection("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=OWL;Integrated Security=True"));
 
 // Register Repositories
+builder.Services.AddScoped<IGamemodeRepository, GamemodeRepository>();
 builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
 builder.Services.AddScoped<IFightstyleRepository, FightstyleRepository>();
 builder.Services.AddScoped<IMoveRepository, MoveRepository>();
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // Register Services
+builder.Services.AddScoped<GamemodeService>();
 builder.Services.AddScoped<CharacterService>();
 builder.Services.AddScoped<FightstyleService>();
 builder.Services.AddScoped<MoveService>();
 builder.Services.AddScoped<NewsService>();
+builder.Services.AddScoped<CategoryService>();
 
 // Register Models
+builder.Services.AddScoped<Gamemode>();
 builder.Services.AddScoped<Character>();
 builder.Services.AddScoped<Fightstyle>();
 builder.Services.AddScoped<Move>();
+builder.Services.AddScoped<News>();
+builder.Services.AddScoped<Category>();
+
+
 
 
 // Add services to the container.

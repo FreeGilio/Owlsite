@@ -21,17 +21,20 @@ namespace OWL.Core.Services
             this._fightstyleRepo = fightstyleRepository;
         }
 
-        public Fightstyle GetFightstyleById(int styleId)
+        public Fightstyle GetFightstyleById(int? styleId)
         {
-            if (string.IsNullOrEmpty(styleId.ToString()))
+            if (!styleId.HasValue)
             {
-                throw new IdNotFoundException("Fightstyle ID has not been found", styleId);
+                throw new IdNotFoundException("Fightstyle ID has not been provided.");
             }
-            else
+
+            FightstyleDto styleDto = _fightstyleRepo.GetFightstyleDtoById(styleId.Value);
+            if (styleDto == null)
             {
-                FightstyleDto styleDto = _fightstyleRepo.GetFightstyleDtoById(styleId);
-                return new Fightstyle(styleDto);
+                throw new IdNotFoundException(styleId.Value);
             }
+
+            return new Fightstyle(styleDto);          
         }
 
         public List<Fightstyle> GetAllFightstyles()
@@ -48,13 +51,27 @@ namespace OWL.Core.Services
             }
         }
 
+        public List<Fightstyle> GetAllFightstylesNotMatchingCharacter()
+        {
+            try
+            {
+                List<FightstyleDto> styleDtos = _fightstyleRepo.GetAllFightstylesNotMatchingCharacter();
+                return Fightstyle.MapToFightstyles(styleDtos);
+            }
+            catch (Exception ex)
+            {
+                OwlLogger.LogError("Error getting all fight styles", ex);
+                throw;
+            }
+        }
+
         public void AddFightstyle(Fightstyle fightstyle)
         {
             try
             {
                 if (string.IsNullOrEmpty(fightstyle.Name))
                 {
-                    throw new ArgumentException("Fightstyle name cannot be null or empty");
+                    throw new NameRequiredException("Fightstyle name cannot be null or empty");
                 }
 
                 FightstyleDto styleDto = new FightstyleDto(fightstyle);

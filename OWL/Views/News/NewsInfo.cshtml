@@ -1,4 +1,6 @@
-﻿@{
+﻿@model OWL.Core.Models.News
+
+@{
     ViewData["Title"] = "NewsInfo";
 }
 
@@ -6,7 +8,7 @@
 
     <div class="container">
         <div class="image">
-            <img src="@Model.Image" alt="Character Image" class="bd-placeholder-img card-img-top">
+            <img src="@Model.Image" alt="Article Image" class="bd-placeholder-img card-img-top img-medium">
         </div>
         <div class="content">
             <h4>@Model.Category.Name</h4>
@@ -14,6 +16,21 @@
             <h4> @Model.Description</h4>
             <h5>@Model.Date</h5>
         </div>
+    </div>
+
+    <div class="flex">
+
+        <div onclick="location.href='/News/EditArticle?id=@Model.Id'" class="btn btn-primary cursor-pointer">
+            Edit Article
+        </div>
+        <div class="mr-2">
+            @using (Html.BeginForm("DeleteArticle", "News", FormMethod.Post, new { @onsubmit = "return confirmDeletion(event, this);" }))
+            {
+                @Html.Hidden("id", Model.Id)
+                <button id="delete-button-@Model.Id" class="btn btn-danger py-1 px-2 rounded-sm" type="submit">Delete Article</button>
+            }
+        </div>
+
     </div>
 
 </body>

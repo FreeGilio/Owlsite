@@ -30,6 +30,7 @@ namespace OWL.Core.Models
             Name = name;
             Description = description;
             Image = image;
+            NewlyAdded = newlyAdded;
             FightStyle = fightstyle;
         }
         public Character(CharacterDto characterDto)

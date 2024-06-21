@@ -41,3 +41,5 @@ D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\runtimes\win-x64\nati
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\wwwroot\Images\Characters\Unknown.png
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL\bin\Debug\net8.0\wwwroot\Images\News\Question.png

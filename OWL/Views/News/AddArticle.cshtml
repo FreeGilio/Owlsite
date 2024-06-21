@@ -1,0 +1,63 @@
+﻿@model OWL.Core.Models.News
+
+@{
+    ViewData["Title"] = "Create an article";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/AddChar.css" />
+
+<body>
+    <div class="body">
+        <h1>Add Character</h1>
+        @using (Html.BeginForm("AddArticle", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Name</label>
+                    @Html.TextBoxFor(m => m.Title, new { placeholder = "A new update has arrived!" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The title of the article. required</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="description">Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { placeholder = "Check out this new update of the game!" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Write down the content for the article</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="image">Upload Image</label>
+                    <input type="file" name="imageFile" id="imageFile" accept="image/*" />
+                    @Html.ValidationMessage("Image")
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Image for the article</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="fightstyle">Category</label>
+                    @Html.DropDownList("selectedCategoryId", (SelectList)ViewBag.Categories, "Select Category")
+                    @Html.ValidationMessageFor(m => m.Category.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Select the category of the article</h1>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Create Article</button>
+            </div>
+        }
+    </div>
+</body>

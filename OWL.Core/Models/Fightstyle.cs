@@ -21,6 +21,14 @@ namespace OWL.Core.Models
 
         public Fightstyle() { }
 
+        public Fightstyle(int id, string name, int power, int speed)
+        {
+            Id = id;
+            Name = name;
+            Power = power;
+            Speed = speed;
+        }
+
         public Fightstyle(FightstyleDto fightstyleDto)
         {
             Id = fightstyleDto.Id;

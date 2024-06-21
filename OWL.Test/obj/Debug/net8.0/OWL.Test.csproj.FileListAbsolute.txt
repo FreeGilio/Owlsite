@@ -119,3 +119,5 @@ D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\refint\OWL.Test.
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\OWL.Test.pdb
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\OWL.Test.genruntimeconfig.cache
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\ref\OWL.Test.dll
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\bin\Debug\net8.0\wwwroot\Images\Characters\Unknown.png
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\bin\Debug\net8.0\wwwroot\Images\News\Question.png

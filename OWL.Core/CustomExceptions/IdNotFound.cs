@@ -16,10 +16,19 @@ namespace OWL.Core.CustomExceptions
         public IdNotFoundException(string message)
             : base(message) { }
 
-        public IdNotFoundException(string message, int id)
-            : this(message)
+        public IdNotFoundException(int id)
+            : this($"Entity with ID '{id}' not found.")
         {
             Id = id;
         }
+
+        public IdNotFoundException(int id, Exception innerException)
+            : this($"Entity with ID '{id}' not found.", innerException)
+        {
+            Id = id;
+        }
+
+        public IdNotFoundException(string message, Exception innerException)
+            : base(message, innerException) { }
     }
 }

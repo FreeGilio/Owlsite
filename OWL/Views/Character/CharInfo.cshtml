@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <div class="image">
-            <img src="@Model.Image" alt="Character Image" class="bd-placeholder-img card-img-top">
+            <img src="@Model.Image" alt="Character Image" class="bd-placeholder-img card-img-top img-small">
         </div>
         <div class="content">
             <h2> @Model.Name</h2>
@@ -21,13 +21,21 @@
         </div>
     </div>
 
-    <div>
-        @using (Html.BeginForm("DeleteCharacter", "Character", FormMethod.Post, new { @onsubmit = "return confirmDeletion(event, this);" }))
-        {
-            @Html.Hidden("id", Model.Id)
-            <button id="delete-button-@Model.Id" class="bg-red-500 py-1 px-2 rounded-sm" type="submit">Delete Character</button>
-        }
+    <div class="flex">
+
+        <div onclick="location.href='/Character/EditChar?id=@Model.Id'" class="btn btn-primary cursor-pointer">
+            Edit Character
+        </div>
+        <div class="mr-2">
+            @using (Html.BeginForm("DeleteCharacter", "Character", FormMethod.Post, new { @onsubmit = "return confirmDeletion(event, this);" }))
+            {
+                @Html.Hidden("id", Model.Id)
+                <button id="delete-button-@Model.Id" class="btn btn-danger py-1 px-2 rounded-sm" type="submit">Delete Character</button>
+            }
+        </div>
+       
     </div>
+
 </body>
 
 <script>

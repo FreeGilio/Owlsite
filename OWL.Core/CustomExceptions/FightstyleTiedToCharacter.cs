@@ -11,7 +11,7 @@ namespace OWL.Core.CustomExceptions
         public string CharacterName { get; }
         public string FightstyleName { get; }
 
-        public FightstyleTiedToCharacterException(string message, string characterName, string fightstyleName) : base(message)
+        public FightstyleTiedToCharacterException(string characterName, string fightstyleName) : base(String.Format("A character is already tied with this fightstyle.", characterName, fightstyleName))
         {
             CharacterName = characterName;
             FightstyleName = fightstyleName;

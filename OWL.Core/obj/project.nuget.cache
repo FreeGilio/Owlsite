@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "5FPwhX33wSkAc7O0WhRLNy0wq9hC3Zp6QgtenAGPmmRBzD4mxgZVL9L1UkP27axWbjJExFrwfJHt8R9aR6gSbw==",
+  "dgSpecHash": "uZrE54DLx3fzVcJS7CrVheswaRacVwddNXSRrOdSGan9I4KlYN0DNgosha3MYDe5XYMx96j58bgWuvCLrenUMA==",
   "success": true,
   "projectFilePath": "D:\\Fontys\\Semester2\\Herhaling\\Owlsite\\OWL.Core\\OWL.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\humpr\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\humpr\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\humpr\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

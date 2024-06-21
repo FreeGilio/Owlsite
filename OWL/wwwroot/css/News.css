@@ -11,4 +11,9 @@
     color: black;
 }
 
+.img-medium {
+    width: 300px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
 

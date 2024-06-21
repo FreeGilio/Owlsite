@@ -70,42 +70,86 @@ namespace OWL.DataAccess.Repository
             return result;
         }
 
-        public void CheckFightstyleTiedToCharacter(CharacterDto characterToAdd)
+        public bool CheckNameExists(CharacterDto character, int? currentCharacterId = null)
         {
             databaseConnection.StartConnection(connection =>
             {
+                // First, check if the Name already exists in the database
+                string checknameSql = "SELECT COUNT(*) FROM Character WHERE Name = @Name";
+
+                if (currentCharacterId.HasValue)
+                {
+                    checknameSql += " AND Id != @CurrentCharacterId";
+                }
+
+                using (SqlCommand checkCommand = new SqlCommand(checknameSql, (SqlConnection)connection))
+                {
+                    checkCommand.Parameters.Add(new SqlParameter("@Name", character.Name));
+
+                    if (currentCharacterId.HasValue)
+                    {
+                        checkCommand.Parameters.Add(new SqlParameter("@CurrentCharacterId", currentCharacterId.Value));
+                    }
+
+                    int count = (int)checkCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        // Name already exists, handle the error
+                        throw new NameExistsException("A character with this name already exists.", character.Name);
+                    }
+                }             
+            });
+            return false;
+        }
+
+        public bool CheckFightstyleTiedToCharacter(CharacterDto characterToAdd, int? currentCharacterId = null)
+        {
+            bool isTied = false;
+
+            databaseConnection.StartConnection(connection =>
+            {
                 string checkMatchSql = @"
-            SELECT 
-                c.Id as Id,
-                c.Name as Name,
-                c.Description,
-                c.Image,
+            SELECT c.Id as Id, 
+                c.Name as Name, 
+                c.Description, 
+                c.Image, 
                 c.NewlyAdded,
-                fs.Id as FightstyleId,
-                fs.Name as FightstyleName,
-                fs.Power,
-                fs.Speed
-            FROM 
-                Character c
-            JOIN
-                Fightstyle fs ON c.fightstyle_id = fs.Id
-            WHERE
-                fs.Name = @FightstyleName;
-        ";
+                   fs.Id as FightstyleId, 
+                   fs.Name as FightstyleName, 
+                   fs.Power, 
+                   fs.Speed
+            FROM Character c
+            LEFT JOIN Fightstyle fs ON c.fightstyle_id = fs.Id
+            WHERE fs.Name = @FightstyleName
+            ";
+
+                if (currentCharacterId.HasValue)
+                {
+                    checkMatchSql += " AND c.Id != @CurrentCharacterId";
+                }
 
                 using (SqlCommand checkMatchCommand = new SqlCommand(checkMatchSql, (SqlConnection)connection))
                 {
                     checkMatchCommand.Parameters.Add(new SqlParameter("@FightstyleName", characterToAdd.Fightstyle.Name));
 
+                    if (currentCharacterId.HasValue)
+                    {
+                        checkMatchCommand.Parameters.Add(new SqlParameter("@CurrentCharacterId", currentCharacterId.Value));
+                    }
+
                     using (SqlDataReader reader = checkMatchCommand.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            throw new FightstyleTiedToCharacterException("A character is already tied with this fightstyle.", characterToAdd.Name, characterToAdd.Fightstyle.Name);
+                            isTied = true; // Set to true if a match is found
+                                           //throw new FightstyleTiedToCharacterException("A character is already tied with this fightstyle.", characterToAdd.Name, characterToAdd.Fightstyle.Name);
+
                         }
                     }
                 }
             });
+            return isTied;
         }
 
         public void UpdateNewlyAdded()
@@ -125,20 +169,8 @@ namespace OWL.DataAccess.Repository
         {
             databaseConnection.StartConnection(connection =>
             {
-                // First, check if the Name already exists in the database
-                string checknameSql = "SELECT COUNT(*) FROM Character WHERE Name = @Name;";
-                using (SqlCommand checkCommand = new SqlCommand(checknameSql, (SqlConnection)connection))
-                {
-                    checkCommand.Parameters.Add(new SqlParameter("@Name", characterToAdd.Name));
-                    int count = (int)checkCommand.ExecuteScalar();
-
-                    if (count > 0)
-                    {
-                        // Name already exists, handle the error
-                        throw new NameExistsException("A character with this name already exists.", characterToAdd.Name);
-                    }
-                }
-
+              
+                CheckNameExists(characterToAdd);
                 CheckFightstyleTiedToCharacter(characterToAdd);
                 UpdateNewlyAdded();         
 
@@ -154,6 +186,29 @@ namespace OWL.DataAccess.Repository
                             insertCommand.ExecuteNonQuery();
                             
                 }                             
+            });
+        }
+
+        public void UpdateCharacterDto(CharacterDto characterToUpdate)
+        {
+            databaseConnection.StartConnection(connection =>
+            {
+                CheckNameExists(characterToUpdate, characterToUpdate.Id);
+                CheckFightstyleTiedToCharacter(characterToUpdate, characterToUpdate.Id);
+
+                string updateSql = "UPDATE Character SET Name = @Name, Image = @Image, Description = @Description, NewlyAdded = @NewlyAdded, Fightstyle_id = @Fightstyle_id WHERE Id = @Id;";
+                using (SqlCommand updateCommand = new SqlCommand(updateSql, (SqlConnection)connection))
+                {
+                    updateCommand.Parameters.Add(new SqlParameter("@Id", characterToUpdate.Id));
+                    updateCommand.Parameters.Add(new SqlParameter("@Name", characterToUpdate.Name));
+                    updateCommand.Parameters.Add(new SqlParameter("@Image", characterToUpdate.Image));
+                    updateCommand.Parameters.Add(new SqlParameter("@Description", characterToUpdate.Description));
+                    updateCommand.Parameters.Add(new SqlParameter("@NewlyAdded", false));
+                    updateCommand.Parameters.Add(new SqlParameter("@Fightstyle_id", characterToUpdate.Fightstyle.Id));
+
+                    updateCommand.ExecuteNonQuery();
+
+                }
             });
         }
 

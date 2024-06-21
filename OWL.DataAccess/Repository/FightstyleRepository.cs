@@ -38,7 +38,7 @@ namespace OWL.DataAccess.Repository
                         {
                             if (reader.IsDBNull(0))
                             {
-                                throw new IdNotFoundException("Fightstyle with this Id has not been found", reader.GetInt32(0));
+                                throw new IdNotFoundException(reader.GetInt32(0));
                             }
                             else
                             {
@@ -81,7 +81,35 @@ namespace OWL.DataAccess.Repository
                     insertCommand.ExecuteNonQuery();
                 }
             });
-        }      
+        }
+
+        public List<FightstyleDto> GetAllFightstylesNotMatchingCharacter()
+        {
+            List<FightstyleDto> styles = new List<FightstyleDto>();
+
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = @"
+            SELECT fs.Id, fs.Name, fs.Power, fs.Speed
+            FROM Fightstyle fs
+            LEFT JOIN Character c ON fs.Id = c.fightstyle_id
+            WHERE c.fightstyle_id IS NULL OR c.Id IS NULL;
+                 ";
+                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        styles.Add(MapFightstyleDtoFromReader(reader));
+                    }
+                }
+            });
+
+            return styles;
+        }
+
+
 
         public List<FightstyleDto> GetAllFightstyles()
         {

@@ -1,0 +1,83 @@
+﻿@model OWL.Core.Models.News
+
+@{
+    ViewData["Title"] = "Create an article";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/AddArticle.css" />
+
+<body>
+    <div class="body">
+        <h1>Add Character</h1>
+        @using (Html.BeginForm("EditArticle", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Title</label>
+                    @Html.TextBoxFor(m => m.Title, new { placeholder = "A new update has arrived!" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The title of the article. required</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="description">Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { placeholder = "Check out this new update of the game!" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Write down the content for the article</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="imageFile">Upload New Image</label>
+                    <input type="file" name="imageFile" id="imageFile" accept="image/*" />
+                    @Html.ValidationMessage("Image")
+                    @if (!string.IsNullOrEmpty(Model.Image) && Model.Image != "/Images/News/Question.png")
+                    {
+                        <div>
+                            <img src="@Model.Image" alt="Character Image" style="max-width: 200px; max-height: 200px;" />
+                        </div>
+                    }
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Image for the article</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="date">Date</label>
+                    @Html.TextBoxFor(m => m.Date, new { type = "date" })
+                    @Html.ValidationMessageFor(m => m.Date)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Change the date for when the article was posted</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="fightstyle">Category</label>
+                    @Html.DropDownList("selectedCategoryId", (SelectList)ViewBag.Categories, "Select Category")
+                    @Html.ValidationMessageFor(m => m.Category.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Select the category of the article</h1>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Create Article</button>
+            </div>
+        }
+    </div>
+</body>

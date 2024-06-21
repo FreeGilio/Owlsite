@@ -9,7 +9,7 @@
 <body>
     <div class="body">
         <h1>Add Character</h1>
-        @using (Html.BeginForm("AddChar", "Character", FormMethod.Post))
+        @using (Html.BeginForm("AddChar", "Character", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="grid-container">
                 <div class="main-divs grid-item">
@@ -34,10 +34,10 @@
             </div>
 
             <div class="grid-container">
-                <div class="main-divs grid-item">
-                    <label for="image">Image</label>
-                    @Html.TextBoxFor(m => m.Image, new { placeholder = "https://example.com" })
-                    @Html.ValidationMessageFor(m => m.Image)
+                <div class="main-divs grid-item">                 
+                    <label for="image">Upload Image</label>
+                    <input type="file" name="imageFile" id="imageFile" accept="image/*" />
+                    @Html.ValidationMessage("Image")
                 </div>
                 <div class="tip-text grid-item">
                     <h1>Image for the character</h1>
@@ -48,7 +48,7 @@
                 <div class="main-divs grid-item">
                     <label for="fightstyle">Fightstyle</label>
                     @Html.DropDownList("selectedStyleId", (SelectList)ViewBag.Fightstyles, "Select Fightstyle")
-                    @Html.ValidationMessage("selectedStyleId")
+                    @Html.ValidationMessageFor(m => m.FightStyle.Name)
                 </div>
                 <div class="tip-text grid-item">
                     <h1>Select the fightstyle of the character</h1>
