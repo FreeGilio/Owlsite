@@ -198,6 +198,20 @@ namespace OWL.Core.Services
             }
         }
 
+        public List<Move> GetMovesForCharacter(int characterId)
+        {
+            try
+            {
+                List<MoveDto> moveDtos = _characterRepo.GetMovesForCharacter(characterId);
+                return Move.MapToMoves(moveDtos);
+            }
+            catch (Exception ex)
+            {
+                OwlLogger.LogError($"Error getting moves for character with ID {characterId}", ex);
+                throw;
+            }
+        }
+
     }
 }
  

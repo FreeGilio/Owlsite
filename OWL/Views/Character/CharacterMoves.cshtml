@@ -1,0 +1,31 @@
+﻿@model Tuple<string, List<OWL.Core.Models.Move>>
+
+<h1>Moveset for @Model.Item1</h1>
+
+@if (Model.Item2.Count == 0)
+{
+    <p>No moves found for this character.</p>
+}
+else
+{
+    <ul>
+        @foreach (var move in Model.Item2)
+        {
+            <li>
+                <h3>@move.Name</h3>
+                @if (!string.IsNullOrEmpty(move.Description))
+                {
+                    <p>@move.Description</p>
+                }
+                @if (!string.IsNullOrEmpty(move.Image))
+                {
+                    <img src="@move.Image" alt="@move.Name" style="max-width: 200px; max-height: 200px;" />
+                }
+                @if (!string.IsNullOrEmpty(move.Motion))
+                {
+                    <p>Motion: @move.Motion</p>
+                }
+            </li>
+        }
+    </ul>
+}

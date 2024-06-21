@@ -1,0 +1,74 @@
+﻿@model OWL.Core.Models.Move
+
+@{
+    ViewData["Title"] = "Create move";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/AddChar.css" />
+
+<body>
+    <div class="body">
+        <h1>Add Character</h1>
+        @using (Html.BeginForm("AddMove", "Move", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="name">Name</label>
+                    @Html.TextBoxFor(m => m.Name, new { placeholder = "Hadouken" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>The name of the move. Is required</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="description">Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { placeholder = "A fireball attack" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Write down a short description of the move</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="image">Upload Image</label>
+                    <input type="file" name="imageFile" id="imageFile" accept="image/*" />
+                    @Html.ValidationMessage("Image")
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Image for the move</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="motion">Motion</label>
+                    @Html.TextBoxFor(m => m.Motion, new { placeholder = "Double tap the forward button" })
+                    @Html.ValidationMessageFor(m => m.Motion)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Describe what type of motion you have to perform on the controller for the move to come out</h1>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="main-divs grid-item">
+                    <label for="fightstyle">Assign to:</label>
+                    @Html.DropDownList("selectedCharId", (SelectList)ViewBag.Characters, "Universal")
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="tip-text grid-item">
+                    <h1>Assign the move to a character or have it be universal</h1>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Create move</button>
+            </div>
+        }
+    </div>
+</body>

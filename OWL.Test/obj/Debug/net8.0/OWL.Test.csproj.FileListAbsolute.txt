@@ -121,3 +121,4 @@ D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\OWL.Test.genrunt
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\obj\Debug\net8.0\ref\OWL.Test.dll
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\bin\Debug\net8.0\wwwroot\Images\Characters\Unknown.png
 D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\bin\Debug\net8.0\wwwroot\Images\News\Question.png
+D:\Fontys\Semester2\Herhaling\Owlsite\OWL.Test\bin\Debug\net8.0\wwwroot\Images\Move\Question.png

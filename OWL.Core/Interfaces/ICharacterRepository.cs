@@ -21,5 +21,7 @@ namespace OWL.Core.Interfaces
 
         void UpdateCharacterDto(CharacterDto characterToUpdate);
         void DeleteCharacter(CharacterDto character);
+
+        public List<MoveDto> GetMovesForCharacter(int characterId);
     }
 }

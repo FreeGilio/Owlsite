@@ -130,5 +130,21 @@ namespace OWL.MVC.Controllers
             return RedirectToAction("Index", "Character");
         }
 
+        public IActionResult CharacterMoves(int id)
+        {
+            try
+            {
+                Character characterModel = characterService.GetCharacterById(id);
+                List<Move> moves = characterService.GetMovesForCharacter(id);
+
+                Tuple<string, List<Move>> model = new Tuple<string, List<Move>>(characterModel.Name, moves);
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Character"); // Redirect to a safe page
+            }
+        }
+
     }
 }

@@ -22,8 +22,11 @@
     </div>
 
     <div class="flex">
+        <div onclick="location.href='/Character/CharacterMoves?id=@Model.Id'" class="btn btn-primary cursor-pointer, padding: 20px">
+            Movelist
+        </div>
 
-        <div onclick="location.href='/Character/EditChar?id=@Model.Id'" class="btn btn-primary cursor-pointer">
+        <div onclick="location.href='/Character/EditChar?id=@Model.Id'" class="btn btn-primary cursor-pointer, padding: 20px">
             Edit Character
         </div>
         <div class="mr-2">
@@ -32,8 +35,7 @@
                 @Html.Hidden("id", Model.Id)
                 <button id="delete-button-@Model.Id" class="btn btn-danger py-1 px-2 rounded-sm" type="submit">Delete Character</button>
             }
-        </div>
-       
+        </div>      
     </div>
 
 </body>

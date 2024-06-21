@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af003ffdabb31fe67f4cf3d9425b5e15f6358507")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6cdb670cf6ef6c4dbba1b4989721822fbb86225")]
 [assembly: System.Reflection.AssemblyProductAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OWL.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

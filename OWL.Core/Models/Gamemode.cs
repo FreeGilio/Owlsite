@@ -8,5 +8,6 @@ namespace OWL.Core.Models
 {
     public class Gamemode
     {
+
     }
 }

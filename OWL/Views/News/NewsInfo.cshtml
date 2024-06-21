@@ -30,7 +30,14 @@
                 <button id="delete-button-@Model.Id" class="btn btn-danger py-1 px-2 rounded-sm" type="submit">Delete Article</button>
             }
         </div>
-
     </div>
-
 </body>
+
+<script>
+    function confirmDeletion(event, form) {
+        event.preventDefault();
+        if (confirm("Are you sure you want to delete this article?")) {
+            form.submit();
+        }
+    }
+</script>

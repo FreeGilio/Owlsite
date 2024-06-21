@@ -295,6 +295,42 @@ namespace OWL.DataAccess.Repository
             return characters;
         }
 
+        public List<MoveDto> GetMovesForCharacter(int characterId)
+        {
+            List<MoveDto> moves = new List<MoveDto>();
+
+            databaseConnection.StartConnection(connection =>
+            {
+                string sql = @"
+            SELECT m.Id, m.Name, m.Description, m.Image, m.Motion
+            FROM Move m
+            JOIN CharacterMove cm ON m.Id = cm.Move_Id
+            WHERE cm.Character_Id = @CharacterId";
+
+                using (SqlCommand command = new SqlCommand(sql, (SqlConnection)connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@CharacterId", characterId));
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            moves.Add(new MoveDto
+                            {
+                                Id = (int)reader["Id"],
+                                Name = (string)reader["Name"],
+                                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : (string)reader["Description"],
+                                Image = reader.IsDBNull(reader.GetOrdinal("Image")) ? null : (string)reader["Image"],
+                                Motion = reader.IsDBNull(reader.GetOrdinal("Motion")) ? null : (string)reader["Motion"]
+                            });
+                        }
+                    }
+                }
+            });
+
+            return moves;
+        }
+
         private CharacterDto MapCharacterDtoFromReader(SqlDataReader reader)
         {
             return new CharacterDto

@@ -1,0 +1,40 @@
+﻿@model List<OWL.Core.Models.Move>
+
+<h1>Universal Moveset</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No universal moves found </p>
+}
+else
+{
+    <ul>
+        @foreach (var move in Model)
+        {
+            <li>
+                <h3>@move.Name</h3>
+                @if (!string.IsNullOrEmpty(move.Description))
+                {
+                    <p>@move.Description</p>
+                }
+                @if (!string.IsNullOrEmpty(move.Image))
+                {
+                    <img src="@move.Image" alt="@move.Name" style="max-width: 200px; max-height: 200px;" />
+                }
+                @if (!string.IsNullOrEmpty(move.Motion))
+                {
+                    <p>Motion: @move.Motion</p>
+                }
+            </li>
+        }
+    </ul>
+}
+
+<body>
+    <div class="text-left" style="width: 80%; margin: 0 auto; padding: 20px;">
+
+        <a class="btn btn-primary" role="button" asp-controller="Move" asp-action="AddMove">
+            Create new move
+        </a>
+    </div>
+</body>
